@@ -46,8 +46,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">cp -R "$(TargetDir)/*" "$(SolutionDir)/Assets/Libraries"</PostBuildEvent>
-    <PostBuildEvent Condition=" '$(OS)' != 'Unix' ">xcopy "$(TargetDir)*$(TargetExt)" "$(SolutionDir)Assets\Libraries" /Y /E /I</PostBuildEvent>
+    <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">cp -R "$(TargetDir)/*" "$(SolutionDir)/Assets/Binaries"</PostBuildEvent>
+    <PostBuildEvent Condition=" '$(OS)' != 'Unix' ">xcopy "$(TargetDir)*" "$(SolutionDir)Assets\Binaries" /Y /E /I</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "$(SolutionDir)Assets\Binaries" /Y /E /I</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
